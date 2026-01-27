@@ -105,14 +105,13 @@ public class Person {
     /** getAge(int year)
      * Finds a persons age in a given year by
      * subtracting their year of birth from the given year.
+     * @param year a year that the user inputs. Must be between 1940 and 2010
+     *             since none of the people are alive outside of that time period.
      * @return Returns the person's age in a given year.
      */
 
     public int getAge(int year) {
-        int YOB = this.getYOB();
-        int age = year - YOB;
-
-        return age;
+        return year - this.getYOB();
     }
 
 
