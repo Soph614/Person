@@ -128,7 +128,7 @@ public class Person {
 
     /**  toJSON()
      * Converts an arraylist of person data into a JSON data string
-     * @return Returns a JSON data String with the person data
+     * @return Returns a JSON data String with person data
      */
 
     public String toJSON() {
@@ -141,6 +141,11 @@ public class Person {
         returnString += " " + DQ + "YOB" + DQ + ":"  + DQ + this.YOB + DQ + "}";
         return returnString;
     }
+
+    /**  toXML()
+     * Converts an arraylist of person data into an XML data string
+     * @return Returns an XML data String with person data
+     */
 
     public String toXML() {
         String returnString = "";

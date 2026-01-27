@@ -48,6 +48,12 @@ class PersonTest {
     @Test
     void toXMLTest() {
         Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals("<Person><ID>000001</ID><firstName>Bilbo</firstName><lastName>Baggins</lastName><title>Esq.</title><YOB>1940</YOB></Person>", bilbo.toXML());
+        assertEquals("<Person>" +
+                                "<ID>000001</ID>" +
+                                "<firstName>Bilbo</firstName>" +
+                                "<lastName>Baggins</lastName>" +
+                                "<title>Esq.</title>" +
+                                "<YOB>1940</YOB>" +
+                              "</Person>", bilbo.toXML());
     }
 }
