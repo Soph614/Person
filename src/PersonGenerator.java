@@ -30,7 +30,6 @@ public class PersonGenerator {
 
             Person person = new Person(ID, firstName, lastName, title, YOB);
             personRecords.add(person);
-            System.out.println(personRecords);
 
             done = SafeInput.getYNConfirm(in, "Are you done?");
         }while (!done);

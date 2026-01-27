@@ -1,59 +1,90 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
+    Person James;
+
+    @BeforeEach
+    void setUp() {
+        James = new Person("000001", "James", "Falcon", "Mr.", 1940);
+    }
+
+    @Test
+    void setIDTest() {
+        James.setID("000002");
+        assertEquals("000002", James.getID());
+    }
+
+    @Test
+    void setFirstNameTest() {
+        James.setFirstName("Jim");
+        assertEquals("Jim", James.getFirstName());
+    }
+
+    @Test
+    void setLastNameTest() {
+        James.setLastName("Raab");
+        assertEquals("Raab", James.getLastName());
+    }
+
+    @Test
+    void setTitleTest() {
+        James.setTitle("Esq.");
+        assertEquals("Esq.", James.getTitle());
+    }
+
+    @Test
+    void setYOBTest() {
+        James.setYOB(1942);
+        assertEquals(1942, James.getYOB());
+    }
+
     @Test
     void fullNameTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals("Bilbo Baggins", bilbo.fullName());
+        assertEquals("James Falcon", James.fullName());
     }
 
     @Test
     void formalNameTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals("Esq. Bilbo Baggins", bilbo.formalName());
+        assertEquals("Mr. James Falcon", James.formalName());
     }
 
     @Test
     void getAgeTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals(86, bilbo.getAge());
+        assertEquals(86, James.getAge());
     }
 
     @Test
     void getAgeInSpecifiedYearTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals(60, bilbo.getAge(2000));
+        assertEquals(60, James.getAge(2000));
     }
 
     @Test
     void toCSVTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals("000001, Bilbo, Baggins, Esq., 1940", bilbo.toCSV());
+        assertEquals("000001, James, Falcon, Mr., 1940", James.toCSV());
     }
 
     @Test
     void toJSONTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
         char DQ = '\u0022';
         assertEquals("{" + DQ + "ID" + DQ + ":" + DQ + "000001" + DQ + ", "
-                + DQ + "firstName" + DQ + ":" + DQ + "Bilbo" + DQ + ", "
-                + DQ + "lastName" + DQ + ":" + DQ + "Baggins" + DQ + ", "
-                + DQ + "title" + DQ + ":" + DQ + "Esq." + DQ + ", "
-                + DQ + "YOB" + DQ + ":" + DQ + "1940" + DQ + "}", bilbo.toJSON());
+                + DQ + "firstName" + DQ + ":" + DQ + "James" + DQ + ", "
+                + DQ + "lastName" + DQ + ":" + DQ + "Falcon" + DQ + ", "
+                + DQ + "title" + DQ + ":" + DQ + "Mr." + DQ + ", "
+                + DQ + "YOB" + DQ + ":" + DQ + "1940" + DQ + "}", James.toJSON());
     }
 
     @Test
     void toXMLTest() {
-        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
         assertEquals("<Person>" +
                                 "<ID>000001</ID>" +
-                                "<firstName>Bilbo</firstName>" +
-                                "<lastName>Baggins</lastName>" +
-                                "<title>Esq.</title>" +
+                                "<firstName>James</firstName>" +
+                                "<lastName>Falcon</lastName>" +
+                                "<title>Mr.</title>" +
                                 "<YOB>1940</YOB>" +
-                              "</Person>", bilbo.toXML());
+                              "</Person>", James.toXML());
     }
 }

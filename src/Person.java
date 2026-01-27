@@ -47,8 +47,6 @@ public class Person {
         this.ID = ID;
     }
 
-
-
     @Override
     public String toString() {
         return "Person{" +
