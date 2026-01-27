@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Person {
-    static Scanner in = new Scanner(System.in);
     private String ID;
     private String firstName;
     private String lastName;
