@@ -29,13 +29,13 @@ class PersonTest {
     }
 
     @Test
-    void toCSV() {
+    void toCSVTest() {
         Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
         assertEquals("000001, Bilbo, Baggins, Esq., 1940", bilbo.toCSV());
     }
 
     @Test
-    void toJSON() {
+    void toJSONTest() {
         Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
         char DQ = '\u0022';
         assertEquals("{" + DQ + "ID" + DQ + ":" + DQ + "000001" + DQ + ", "
@@ -43,5 +43,11 @@ class PersonTest {
                 + DQ + "lastName" + DQ + ":" + DQ + "Baggins" + DQ + ", "
                 + DQ + "title" + DQ + ":" + DQ + "Esq." + DQ + ", "
                 + DQ + "YOB" + DQ + ":" + DQ + "1940" + DQ + "}", bilbo.toJSON());
+    }
+
+    @Test
+    void toXMLTest() {
+        Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
+        assertEquals("<Person><ID>000001</ID><firstName>Bilbo</firstName><lastName>Baggins</lastName><title>Esq.</title><YOB>1940</YOB></Person>", bilbo.toXML());
     }
 }
