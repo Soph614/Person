@@ -21,9 +21,9 @@ class PersonTest {
     }
 
     @Test
-    void getAge2Test() {
+    void getAgeInSpecifiedYearTest() {
         Person bilbo = new Person("000001", "Bilbo", "Baggins", "Esq.", 1940);
-        assertEquals(60, bilbo.getAge2(2000));
+        assertEquals(60, bilbo.getAge(2000));
     }
 
     @Test

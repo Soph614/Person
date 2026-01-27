@@ -69,45 +69,61 @@ public class Person {
     }
 
 
-    public String fullName() {
-        String firstName = this.getFirstName();
-        String lastName = this.getLastName();
+    /** fullName()
+     * Finds a person's full name based on
+     * what their first and last names are.
+     * @return returns the given person's full name.
+     */
 
-        return firstName + " " + lastName;
+    public String fullName() {
+        return this.getFirstName() + " " + this.getLastName();
     }
+
+
+    /** formalName()
+     * Finds a person's formal name based on their
+     * title and what their first and last names are.
+     * @return returns the person's formal name.
+     */
 
     public String formalName() {
-        String firstName = this.getFirstName();
-        String lastName = this.getLastName();
-        String fullName = firstName + " " + lastName;
-        return title + " " + fullName;
+        return this.getTitle() + " " + this.getFirstName() + " " + this.getLastName();
     }
+
+
+    /** getAge()
+     * Finds a person's current age by
+     * subtracting their year of birth from 2026.
+     * @return returns the person's age in 2026
+     */
 
     public int getAge() {
-        int YOB = getYOB();
-        int currentYear = 2026;
-        int age = currentYear - YOB;
-
-        return age;
+        return 2026 - this.getYOB();
     }
 
-    public int getAge2(int year) {
+
+    /** getAge(int year)
+     * Finds a persons age in a given year by
+     * subtracting their year of birth from the given year.
+     * @return Returns the person's age in a given year.
+     */
+
+    public int getAge(int year) {
         int YOB = this.getYOB();
         int age = year - YOB;
 
         return age;
     }
 
+
+    /** toCSV()
+     * Takes data from a Person arraylist and
+     * inputs it into a comma-separated value.
+     * @return Returns a csv record with the person's
+     * ID, first name, last name, title, and YOB.
+     */
+
     public String toCSV() {
-        String ID = this.getID();
-        String firstName = this.getFirstName();
-        String lastName = this.getLastName();
-        String title = this.getTitle();
-        int YOB = this.getYOB();
-
-        String csvRecord;
-        csvRecord = ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
-
-        return csvRecord;
+        return getID() + ", " + getFirstName() + ", " + getLastName() + ", " + getTitle() + ", " + getYOB();
     }
 }
