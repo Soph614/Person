@@ -11,7 +11,7 @@ public class PersonReader {
         Scanner in = new Scanner(System.in); // name and initialize scanner
         String fileToRead;
         String line;
-        boolean done = false;
+        String dataOutput;
 
         JFileChooser chooser = new JFileChooser();
         File workingDirectory = new File(System.getProperty("user.dir"));
@@ -23,17 +23,16 @@ public class PersonReader {
                 Path file = selectedFile.toPath();
                 InputStream inputStream = new BufferedInputStream(Files.newInputStream(file, CREATE));
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                System.out.print("ID#         FirstName   LastName    Title        YOB\n");
-                System.out.print("====================================================\n");
+                String heading1 = String.format("%-8s %-20s %-20s %-6s %6s", "ID#", "FirstName", "LastName", "Title", "YOB");
+                String heading2 = String.format("%064d", 0).replace("0", "=");
+                System.out.print(heading1 + "\n");
+                System.out.print(heading2 + "\n");
                 while(reader.ready()) {
                     line = reader.readLine();
                     String [] dataElements;
                     dataElements = line.split(", ");
-                    for (String d : dataElements) {
-                        String stringOutput;
-                        stringOutput = String.format("%-12s", d);
-                        System.out.print(stringOutput);
-                    }
+                    dataOutput = String.format("%-8s %-20s %-20s %-6s %6s", dataElements);
+                    System.out.print(dataOutput);
                     System.out.println();
                 }
                 reader.close();
