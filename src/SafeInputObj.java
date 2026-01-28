@@ -1,4 +1,9 @@
+import org.junit.jupiter.api.Test;
+
 import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SafeInputObj {
     Scanner pipe = new Scanner(System.in);
@@ -13,11 +18,10 @@ public class SafeInputObj {
 
     /**
      * Get a String which contains at least one character
-     * @param pipe a Scanner opened to read from System.in
      * @param prompt prompt for the user
      * @return a String response that is not zero length
      */
-    public String getNonZeroLenString(Scanner pipe, String prompt)
+    public String getNonZeroLenString(String prompt)
     {
         String retString = "";
         do
@@ -27,17 +31,16 @@ public class SafeInputObj {
         }while(retString.length() == 0); // until we have some characters
 
         return retString;
-
     }
+
     /**
      * Get an int value within a specified numeric range
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt - input prompt msg should not include range info
      * @param low - low end of inclusive range
      * @param high - high end of inclusive range
      * @return - int value within the inclusive range
      */
-    public int getRangedInt(Scanner pipe, String prompt, int low, int high)
+    public int getRangedInt(String prompt, int low, int high)
     {
         int retVal = 0;
         String trash = "";
@@ -71,11 +74,10 @@ public class SafeInputObj {
 
     /**
      * Get an int value with no constraints
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt - input prompt msg should not include range info
      * @return - unconstrained int value
      */
-    public int getInt(Scanner pipe, String prompt)
+    public int getInt(String prompt)
     {
         int retVal = 0;
         String trash = "";
@@ -103,13 +105,12 @@ public class SafeInputObj {
 
     /**
      * get a double value within an inclusive range
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt - input prompt msg should not contain range info
      * @param low - low value inclusive
      * @param high - high value inclusive
      * @return  - double value within the specified inclusive range
      */
-    public double getRangedDouble(Scanner pipe, String prompt, int low, int high)
+    public double getRangedDouble(String prompt, int low, int high)
     {
         double retVal = 0;
         String trash = "";
@@ -143,11 +144,10 @@ public class SafeInputObj {
 
     /**
      * Get an unconstrained double value
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt - input prompt msg should not contain range info
      * @return  - an unconstrained double value
      */
-    public double getDouble(Scanner pipe, String prompt)
+    public double getDouble(String prompt)
     {
         double retVal = 0;
         String trash = "";
@@ -174,11 +174,10 @@ public class SafeInputObj {
 
     /**
      * Get a [Y/N] confirmation from the user
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt -input prompt msg for user does not need [Y/N]
      * @return - true for yes false for no
      */
-    public boolean getYNConfirm(Scanner pipe, String prompt)
+    public boolean getYNConfirm(String prompt)
     {
         boolean retVal = true;
         String response = "";
@@ -209,13 +208,12 @@ public class SafeInputObj {
     }
     /**
      * Get a string that matches a RegEx pattern! This is a very powerful method
-     * @param pipe - Scanner instance to read the data System.in in most cases
      * @param prompt - prompt for user
      * @param regExPattern - java style RegEx pattern to constrain the input
      * @return a String that matches the RegEx pattern supplied
      */
 
-    public String getRegExString(Scanner pipe, String prompt, String regExPattern)
+    public String getRegExString(String prompt, String regExPattern)
     {
         String response = "";
         boolean gotAVal = false;
@@ -237,5 +235,35 @@ public class SafeInputObj {
         }while(!gotAVal);
 
         return response;
+    }
+
+    @Test
+    void getNonZeroLenStringTest() {
+        String reply = getNonZeroLenString("Enter a string longer than 0 characters");
+        assertNotNull(reply);
+    }
+
+    @Test
+    void getRangedInt() {
+    }
+
+    @Test
+    void getInt() {
+    }
+
+    @Test
+    void getRangedDouble() {
+    }
+
+    @Test
+    void getDouble() {
+    }
+
+    @Test
+    void getYNConfirm() {
+    }
+
+    @Test
+    void getRegExString() {
     }
 }
