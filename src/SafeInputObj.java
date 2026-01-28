@@ -9,11 +9,9 @@ public class SafeInputObj {
     Scanner pipe = new Scanner(System.in);
 
     public SafeInputObj() {
-
     }
 
     public SafeInputObj(Scanner scanner) {
-
     }
 
     /**
@@ -206,13 +204,13 @@ public class SafeInputObj {
 
         return retVal;
     }
+
     /**
      * Get a string that matches a RegEx pattern! This is a very powerful method
      * @param prompt - prompt for user
      * @param regExPattern - java style RegEx pattern to constrain the input
      * @return a String that matches the RegEx pattern supplied
      */
-
     public String getRegExString(String prompt, String regExPattern)
     {
         String response = "";
@@ -235,35 +233,5 @@ public class SafeInputObj {
         }while(!gotAVal);
 
         return response;
-    }
-
-    @Test
-    void getNonZeroLenStringTest() {
-        String reply = getNonZeroLenString("Enter a string longer than 0 characters");
-        assertNotNull(reply);
-    }
-
-    @Test
-    void getRangedInt() {
-    }
-
-    @Test
-    void getInt() {
-    }
-
-    @Test
-    void getRangedDouble() {
-    }
-
-    @Test
-    void getDouble() {
-    }
-
-    @Test
-    void getYNConfirm() {
-    }
-
-    @Test
-    void getRegExString() {
     }
 }
